@@ -1,0 +1,45 @@
+{% extends "contacts/base.html" %}
+
+{% block content %}
+<div class="page-heading">
+    <h2>My Contacts</h2>
+    <a href="{% url 'add_contact' %}" class="button">+ Add Contact</a>
+</div>
+
+{% if contacts %}
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Birthday</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.birthday|default_if_none:"—" }}</td>
+                <td>{{ contact.phone|default_if_none:"—"|default:"—" }}</td>
+                <td>{{ contact.email|default_if_none:"—"|default:"—" }}</td>
+                <td>{{ contact.address|default_if_none:"—"|default:"—" }}</td>
+                <td class="actions">
+                    <a href="{% url 'edit_contact' contact.pk %}">Edit</a>
+                    <a href="{% url 'delete_contact' contact.pk %}" class="delete-link">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <h3>No contacts yet</h3>
+    <p>Add your first contact to get started.</p>
+</div>
+{% endif %}
+{% endblock %}

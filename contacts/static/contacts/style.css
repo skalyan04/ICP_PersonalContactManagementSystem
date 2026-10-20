@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #263238;
+}
+
+header {
+    background: #263b57;
+    color: white;
+    padding: 24px 8%;
+}
+
+header h1 {
+    margin: 0 0 8px;
+}
+
+header p {
+    margin: 0;
+    color: #dbe5f0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    background: #2864b4;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #1c4d91;
+}
+
+.table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #00000010;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #e5e9ef;
+}
+
+th {
+    background: #eaf0f7;
+}
+
+.actions {
+    white-space: nowrap;
+}
+
+.actions a {
+    margin-right: 8px;
+    color: #2864b4;
+}
+
+.actions .delete-link {
+    color: #c0392b;
+}
+
+.form-container,
+.empty-state {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 28px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #00000010;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd3dd;
+    border-radius: 5px;
+    font: inherit;
+}
+
+.form-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.cancel-link {
+    color: #526171;
+}
+
+.delete-button {
+    background: #c0392b;
+}
+
+.delete-button:hover {
+    background: #962d22;
+}
+
+.error {
+    color: #c0392b;
+    font-size: 14px;
+}
+
+.empty-state {
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    header {
+        padding: 22px;
+    }
+}

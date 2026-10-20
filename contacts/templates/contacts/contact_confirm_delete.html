@@ -1,0 +1,17 @@
+{% extends "contacts/base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Delete Contact</h2>
+    <p>Are you sure you want to delete <strong>{{ contact.name }}</strong>?</p>
+    <p>This action cannot be undone.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="button delete-button">Yes, Delete</button>
+            <a href="{% url 'contact_list' %}" class="cancel-link">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
