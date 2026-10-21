@@ -1,11 +1,23 @@
 from django.shortcuts import get_object_or_404, redirect, render
+from django.db.models import Q
 from .forms import ContactForm
 from .models import Contact
 
 
 def contact_list(request):
-    contacts = Contact.objects.all().order_by("name")
-    return render(request, "contacts/contact_list.html", {"contacts": contacts})
+    search_query = request.GET.get("q", "").strip()
+    contacts = Contact.objects.all()
+
+    if search_query:
+        contacts = contacts.filter(
+            Q(name__icontains=search_query) | Q(phone__icontains=search_query)
+        )
+
+    contacts = contacts.order_by("name")
+    return render(request, "contacts/contact_list.html", {
+        "contacts": contacts,
+        "search_query": search_query,
+    })
 
 
 def add_contact(request):

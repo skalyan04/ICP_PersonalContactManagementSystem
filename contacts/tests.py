@@ -27,3 +27,23 @@ class ContactPhoneValidationTests(TestCase):
         self.assertContains(response, "Please enter a phone number.")
         contact.refresh_from_db()
         self.assertEqual(contact.phone, "1234567890")
+
+
+class ContactSearchTests(TestCase):
+    def setUp(self):
+        Contact.objects.create(name="First Contact", phone="1112223333")
+        Contact.objects.create(name="Second Contact", phone="4445556666")
+
+    def test_search_finds_contacts_by_name(self):
+        response = self.client.get(reverse("contact_list"), {"q": "first"})
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "First Contact")
+        self.assertNotContains(response, "Second Contact")
+
+    def test_search_finds_contacts_by_phone_number(self):
+        response = self.client.get(reverse("contact_list"), {"q": "4445"})
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Second Contact")
+        self.assertNotContains(response, "First Contact")

@@ -6,6 +6,20 @@
     <a href="{% url 'add_contact' %}" class="button">+ Add Contact</a>
 </div>
 
+<form method="get" class="search-form">
+    <input
+        type="search"
+        name="q"
+        value="{{ search_query }}"
+        placeholder="Search by name or phone number"
+        aria-label="Search contacts by name or phone number"
+    >
+    <button type="submit" class="button">Search</button>
+    {% if search_query %}
+    <a href="{% url 'contact_list' %}" class="clear-search">Clear</a>
+    {% endif %}
+</form>
+
 {% if contacts %}
 <div class="table-container">
     <table>
@@ -38,8 +52,13 @@
 </div>
 {% else %}
 <div class="empty-state">
+    {% if search_query %}
+    <h3>No matching contacts</h3>
+    <p>Try searching with a different name or phone number.</p>
+    {% else %}
     <h3>No contacts yet</h3>
     <p>Add your first contact to get started.</p>
+    {% endif %}
 </div>
 {% endif %}
 {% endblock %}

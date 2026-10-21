@@ -54,6 +54,26 @@ main {
     background: #1c4d91;
 }
 
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #cbd3dd;
+    border-radius: 5px;
+    font: inherit;
+}
+
+.clear-search {
+    color: #526171;
+}
+
 .table-container {
     overflow-x: auto;
     background: white;
@@ -159,5 +179,14 @@ th {
 
     header {
         padding: 22px;
+    }
+
+    .search-form {
+        align-items: stretch;
+        flex-wrap: wrap;
+    }
+
+    .search-form input {
+        flex-basis: 100%;
     }
 }
